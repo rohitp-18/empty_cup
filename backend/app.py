@@ -2,12 +2,14 @@ from flask import Flask, jsonify, request
 from dotenv import load_dotenv
 from flask_pymongo import PyMongo
 import os
+from flask_cors import CORS
 
 load_dotenv()
 
 app = Flask(__name__)
 app.config['MONGO_URI'] = os.getenv('DATABASE_URL')
 mongo = PyMongo(app)
+CORS(app)
 
 if not mongo.cx:
     raise Exception("Failed to connect to MongoDB. Please check your DATABASE_URL.")
@@ -74,4 +76,4 @@ def delete_agency(agency_id):
 
 # Run the app
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv('PORT', 5000))
+    app.run(debug=True, port=os.getenv('PORT', 5000), host="0.0.0.0")

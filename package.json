@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "back": "python app.py --port 5000 --prefix /backend"
   },
   "dependencies": {
     "lucide-react": "^0.511.0",
