@@ -5,7 +5,7 @@ import vector from "../assets/Vector.png";
 import { Info, Star } from "lucide-react";
 import bookHeart from "../assets/bookmark-heart 1.png";
 
-function Card({ title, projects, years, ratings, bg }) {
+function Card({ title, projects, years, ratings, bg, mobile }) {
   const [bookmarked, setBookmarked] = useState(false);
 
   function renderStars(rating) {
@@ -41,7 +41,7 @@ function Card({ title, projects, years, ratings, bg }) {
 
   return (
     <div
-      className="flex justify-between gap-2"
+      className="flex justify-between items-center gap-2 h-full"
       style={{ backgroundColor: bg || "#FFFCF2" }}
     >
       <div className="px-4 py-5">
@@ -68,12 +68,22 @@ function Card({ title, projects, years, ratings, bg }) {
           </div>
         </div>
         <div className="flex items-start flex-col pt-7 gap-1">
-          <p className="text-[15px] font-medium h-5">+91 - 984532853</p>
-          <p className="text-[15px] font-medium h-5">+91 - 984532854</p>
+          {mobile ? (
+            mobile.map((number, index) => (
+              <p key={index} className="text-[15px] font-medium h-5">
+                {number}
+              </p>
+            ))
+          ) : (
+            <>
+              <p className="text-[15px] font-medium h-5">+91 - 984532853</p>
+              <p className="text-[15px] font-medium h-5">+91 - 984532854</p>
+            </>
+          )}
         </div>
       </div>
-      <hr className="border-t border-[#E0DCD9] opacity-60" />
-      <div className="flex flex-col justify-between items-center gap-4 px-4 py-5">
+      <hr className="border-l h-52 border-[#D0D0D0] opacity-60" />
+      <div className="flex flex-col h-full place-content-center gap-8 px-4 py-5">
         <div className="flex flex-col items-center">
           <img src={arrow} className="w-[23px] h-[22px]" alt="Arrow Icon" />
           <p className="text-[10px] mt-0.5 text-[#8D4337]">Details</p>

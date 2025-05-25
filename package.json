@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "back": "python app.py --port 5000 --prefix /backend"
+    "down": "npm install && cd backend && pip install -r requirements.txt",
+    "back": "cd backend && python app.py --port 5000",
+    "docker": "docker build -t empty_cup . && docker run -p 5000:5000 empty_cup"
   },
   "dependencies": {
     "lucide-react": "^0.511.0",
